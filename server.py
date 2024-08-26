@@ -4,8 +4,11 @@ import logging
 from data_base import log_message_to_db
 
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
+
+
 async def handle_client(reader, writer, conn):
-    """Обработка соединения клиента с записью данных в базу"""
+    """Обработка соединения клиента с записью данных в базу."""
     addr = writer.get_extra_info("peername")
     logging.info(f"Новое соединение с {addr}")
 
@@ -29,7 +32,7 @@ async def handle_client(reader, writer, conn):
 
 
 async def start_server(conn):
-    """Запуск TCP-сервера с подключением к базе данных"""
+    """Запуск TCP-сервера с подключением к базе данных."""
     server = await asyncio.start_server(
         lambda r, w: handle_client(r, w, conn), '127.0.0.1', 8888
     )
