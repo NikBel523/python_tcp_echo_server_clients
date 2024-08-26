@@ -1,6 +1,8 @@
 import asyncio
 import logging
 
+from data_base import log_message_to_db
+
 
 async def handle_client(reader, writer, conn):
     """Обработка соединения клиента с записью данных в базу"""
@@ -15,6 +17,9 @@ async def handle_client(reader, writer, conn):
 
         message = data.decode()
         logging.info(f"Получено {message} от {addr}")
+
+        # Преобразование addr в строку перед записью в базу данных
+        log_message_to_db(conn, str(addr), message)
 
         writer.write(data)
         await writer.drain()
