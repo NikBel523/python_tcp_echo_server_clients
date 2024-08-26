@@ -10,7 +10,7 @@ CLIENT_TASKS_NUM = 10
 
 
 # Настройка логирования
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 
 
 async def main():

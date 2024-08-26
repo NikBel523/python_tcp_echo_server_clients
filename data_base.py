@@ -5,7 +5,7 @@ from datetime import datetime
 
 def init_db():
     """Инициализация базы данных."""
-    conn = sqlite3.connect('messages.db')
+    conn = sqlite3.connect("messages.db")
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS messages (
@@ -29,6 +29,6 @@ def log_message_to_db(conn, client_address, message):
     ''', (
         client_address,
         message,
-        datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     ))
     conn.commit()
